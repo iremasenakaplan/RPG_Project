@@ -5,16 +5,27 @@ using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] Transform target;
-
+    [SerializeField] Transform target; 
+      
     Ray lastRay;
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            lastRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            MoveToCursor();
         }
-        Debug.DrawRay(lastRay.origin, lastRay.direction*100, Color.red);
-        GetComponent<NavMeshAgent>().destination = target.position;
+    }
+
+    //player controller
+    public void MoveToCursor() 
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        bool hasHit = Physics.Raycast(ray, out hit);    
+
+        if(hasHit == true)
+        {
+            GetComponent<NavMeshAgent>().destination = hit.point;
+        }
     }
 }
