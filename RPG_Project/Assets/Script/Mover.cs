@@ -5,18 +5,16 @@ using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] Transform target; 
-      
-    Ray lastRay;
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             MoveToCursor();
         }
-    }
 
-    //player controller
+        UpdateAnimator();
+    }
+    
     public void MoveToCursor() 
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -27,5 +25,13 @@ public class Mover : MonoBehaviour
         {
             GetComponent<NavMeshAgent>().destination = hit.point;
         }
+    }
+
+    public void UpdateAnimator()
+    {
+        Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("forwardSpeed", speed);
     }
 }
