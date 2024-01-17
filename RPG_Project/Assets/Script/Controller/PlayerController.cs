@@ -10,55 +10,63 @@ namespace RPG.Controller
     {
         void Update()
         {
-            InteractWithCombat();
-            InteractWithMovement();
-
-        }
-
-        private void InteractWithMovement()
-        {
-            if (Input.GetMouseButton(0))
+            if (InteractWithCombat() == true)
             {
-                MoveToCursor();
+                return;
+            }
+            if (InteractWithMovement() == true)
+            {
+                return;
+
             }
         }
 
-        private void InteractWithCombat()
+        private bool InteractWithCombat()
         {
-            
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach(RaycastHit hit in hits)
+            foreach (RaycastHit hit in hits)
             {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+              CombatTarget target = hit.transform.GetComponent<CombatTarget>();
 
-                if(target == null)
-                {
-                    continue;
-                }
+              if (target == null)
+              {
+                 continue;
+              }
 
-                if(Input.GetMouseButtonDown(0))
+              if (Input.GetMouseButtonDown(0))
+              {
+                GetComponent<Fighter>().Attack(target);
+
+              }
+              return true;
+             }
+             return false;
+
+        }
+
+            private bool InteractWithMovement()
+            {
+                RaycastHit hit;
+                bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+
+                if (hasHit == true)
                 {
-                    GetComponent<Fighter>().Attack(target);
+                    if (Input.GetMouseButton(0))
+                    {
+                        GetComponent<Mover>().MoveTo(hit.point);
+                    }
+                    return true;
+
                 }
+                return false;
             }
 
-        }
-
-        public void MoveToCursor()
-        { 
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
-
-            if (hasHit == true)
+            private static Ray GetMouseRay()
             {
-                GetComponent<Mover>().MoveTo(hit.point);
+                return Camera.main.ScreenPointToRay(Input.mousePosition);
             }
-        }
-
-        private static Ray GetMouseRay()
-        {
-            return Camera.main.ScreenPointToRay(Input.mousePosition);
-        }
     }
 }
+
+
 
