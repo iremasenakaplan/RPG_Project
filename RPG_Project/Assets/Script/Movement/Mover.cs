@@ -7,7 +7,7 @@ using RPG.Core;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         void Update()
         {
@@ -27,11 +27,10 @@ namespace RPG.Movement
             GetComponent<NavMeshAgent>().isStopped = false;
         }
 
-        public void Stop()
+        public void Cancel()
         {
             GetComponent<NavMeshAgent>().isStopped = true;
         }
-
         public void UpdateAnimator()
         {
             Vector3 velocity = GetComponent<NavMeshAgent>().velocity;

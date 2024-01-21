@@ -6,8 +6,9 @@ namespace RPG.Core
 {
     public class ActionScheduler : MonoBehaviour
     {
-        MonoBehaviour currentAction;
-        public void StartAction(MonoBehaviour action)
+        IAction currentAction;
+        
+        public void StartAction(IAction action)
         {
             if(currentAction == action)
             {
@@ -16,7 +17,7 @@ namespace RPG.Core
 
             if(currentAction != null)
             {
-                print("iptal edildi" + currentAction); 
+                currentAction.Cancel();
             }
             currentAction = action;
         }
