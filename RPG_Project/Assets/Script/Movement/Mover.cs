@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Combat;
+using RPG.Core;
 
 namespace RPG.Movement
 {
@@ -11,10 +13,23 @@ namespace RPG.Movement
         {
             UpdateAnimator();
         }
+        public void StartMoveAction(Vector3 hit)
+        {
+            GetComponent<ActionScheduler>().StartAction(this);
+            GetComponent<Fighter>().Cancel();
+            GetComponent<NavMeshAgent>().destination = hit;
+            GetComponent<NavMeshAgent>().isStopped = false;
+        }
 
         public void MoveTo(Vector3 hit)
         {
             GetComponent<NavMeshAgent>().destination = hit;
+            GetComponent<NavMeshAgent>().isStopped = false;
+        }
+
+        public void Stop()
+        {
+            GetComponent<NavMeshAgent>().isStopped = true;
         }
 
         public void UpdateAnimator()
