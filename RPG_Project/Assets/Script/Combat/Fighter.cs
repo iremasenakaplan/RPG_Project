@@ -24,8 +24,14 @@ namespace RPG.Combat
             }
             else
             {
+                AttackMethod();
                 GetComponent<Mover>().Cancel();
             }
+        }
+
+        private void AttackMethod()
+        {
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         private bool GetIsInRange()
