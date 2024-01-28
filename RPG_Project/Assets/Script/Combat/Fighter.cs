@@ -44,17 +44,29 @@ namespace RPG.Combat
 
         private void AttackMethod()
         {
+            transform.LookAt(targetObject.transform);
             if(timeSinceLastAttack > timeBetweenAttacks )
             {
-                GetComponent<Animator>().SetTrigger("attack");
+                TriggerAttack();
                 timeSinceLastAttack = 0;
-               
+
             }
 
         }
 
+        private void TriggerAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack");
+        }
+
         void Hit()
         {
+            if(targetObject == null)
+            {
+                return;
+            }
+
             targetObject.TakeDamage(weaponDamage);
         }
 
@@ -71,8 +83,14 @@ namespace RPG.Combat
 
         public void Cancel()
         {
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            StopAttack();
             targetObject = null;
+        }
+
+        private void StopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
         }
     }
 }
