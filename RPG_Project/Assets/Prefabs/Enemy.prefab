@@ -53,7 +53,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4313348888732079392, guid: 7221eb9c48ebf9146abc1f8eec530855, type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7221eb9c48ebf9146abc1f8eec530855, type: 3}
+--- !u!1 &7771817170244024160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4313348888732079392, guid: 7221eb9c48ebf9146abc1f8eec530855, type: 3}
+  m_PrefabInstance: {fileID: 5766610266462528064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4205444084211851765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7771817170244024160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5a53b1e6c79cb4f8cd1988e6dd8cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &5023582935348531198
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7771817170244024160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
