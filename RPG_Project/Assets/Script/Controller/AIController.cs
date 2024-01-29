@@ -1,3 +1,4 @@
+using RPG.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,18 +9,24 @@ namespace RPG.Controller
     {
         [SerializeField] float chaseDistance = 5f;
         GameObject player;
+        Fighter fighter;
 
         void Start()
         {
             player = GameObject.FindWithTag("Player");
+            fighter = GetComponent<Fighter>();
         }
 
 
         void Update()
         {
-            if(DistanceToPlayer() < chaseDistance)
+            if(DistanceToPlayer() < chaseDistance && fighter.CanAttack(player))
             {
-                print(player.name + "Takip edilmeli");
+                fighter.Attack(player);
+            }
+            else
+            {
+                fighter.Cancel();
             }
         }
 
