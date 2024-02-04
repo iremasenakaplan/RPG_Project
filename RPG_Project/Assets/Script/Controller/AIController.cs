@@ -3,21 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
+using RPG.Movement;
 
 namespace RPG.Controller
 {
     public class AIController : MonoBehaviour
     {
         [SerializeField] float chaseDistance = 5f;
+        [SerializeField] float suspicionTime = 5f;
+
         GameObject player;
         Fighter fighter;
         Health health;
+        Mover mover;
+
+        Vector3 enemyLocation;
+        float timeSinceLastSawPlayer;
 
         void Start()
         {
             player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
+            mover = GetComponent<Mover>();
+
+            enemyLocation = transform.position;
         }
 
 
@@ -30,12 +40,18 @@ namespace RPG.Controller
 
             if(DistanceToPlayer() < chaseDistance && fighter.CanAttack(player))
             {
+                timeSinceLastSawPlayer = 0;
                 fighter.Attack(player);
+            }
+            else if(timeSinceLastSawPlayer<suspicionTime)
+            {
+                GetComponent<ActionScheduler>().CancelCurrentAction();
             }
             else
             {
-                fighter.Cancel();
+                mover.StartMoveAction(enemyLocation);
             }
+            timeSinceLastSawPlayer += Time.deltaTime;
         }
 
         private float DistanceToPlayer()
