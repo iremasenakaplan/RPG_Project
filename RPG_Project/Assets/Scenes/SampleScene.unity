@@ -1301,6 +1301,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5394508574600973005, guid: 418e811d67eaa9b46afe0970dbae04f7, type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 5459585587490685287}
     - target: {fileID: 7771817170244024156, guid: 418e811d67eaa9b46afe0970dbae04f7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1523,3 +1527,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5459585586763185469, guid: 832079f7e08c1e147a6a86c882b37bbe, type: 3}
   m_PrefabInstance: {fileID: 5459585587490685285}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5459585587490685287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5459585586763185468, guid: 832079f7e08c1e147a6a86c882b37bbe, type: 3}
+  m_PrefabInstance: {fileID: 5459585587490685285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80eac652363c86d498d8c85d62d99cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

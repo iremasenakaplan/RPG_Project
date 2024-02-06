@@ -19,7 +19,7 @@ namespace RPG.Controller
 
         }
 
-        private int GetNextIndex(int i)
+        public int GetNextIndex(int i)
         {
             if(i + 1 == transform.childCount)
             {
@@ -28,7 +28,7 @@ namespace RPG.Controller
             return i + 1;
         }
 
-        private Vector3 GetWayPointPosition(int i)
+        public Vector3 GetWayPointPosition(int i)
         {
             return transform.GetChild(i).position;
         }
