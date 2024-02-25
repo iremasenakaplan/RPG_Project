@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4313348888732079388, guid: 7221eb9c48ebf9146abc1f8eec530855, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4313348888732079388, guid: 7221eb9c48ebf9146abc1f8eec530855, type: 3}
       propertyPath: m_LocalPosition.z
@@ -105,3 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 5
+  suspicionTime: 5
+  wayPointTolerence: 1
+  wayPointLifeTime: 3
+  patrolSpeedFraction: 0.2
+  patrolPath: {fileID: 0}
