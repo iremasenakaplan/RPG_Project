@@ -44,6 +44,8 @@ namespace RPG.SceneManagement
                 {
                     continue;
                 }
+                if (portal.destination != this.destination) continue;
+
                 return portal;
             }
             return null;
