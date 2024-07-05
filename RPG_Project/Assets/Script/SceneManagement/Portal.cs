@@ -33,7 +33,7 @@ namespace RPG.SceneManagement
             DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
-            yield return fader.FadeOut(fadeOutTime);
+           //yield return fader.FadeOut(fadeOutTime);
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
             Portal otherPortal = GetOtherPortal();
@@ -41,7 +41,7 @@ namespace RPG.SceneManagement
             UpdatePlayer(otherPortal);
 
             yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
+            //yield return fader.FadeIn(fadeInTime);
 
             Destroy(gameObject);
             

@@ -9,13 +9,13 @@ namespace RPG.SceneManagement
         CanvasGroup canvasGroup;
         void Start()
         {
-            canvasGroup = GetComponent<CanvasGroup>();
+            //canvasGroup = GetComponent<CanvasGroup>();
 
             
             
         }
 
-        public IEnumerator FadeOut(float time)
+       /* public IEnumerator FadeOut(float time)
         {
             while(canvasGroup.alpha < 1)
             {
@@ -31,7 +31,7 @@ namespace RPG.SceneManagement
                 canvasGroup.alpha -= Time.deltaTime / time;
                 yield return null;
             }
-        }
-    }
+        } */
+    } 
 
 }
